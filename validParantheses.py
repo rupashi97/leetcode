@@ -1,10 +1,13 @@
+'''
+Using stacks to find valid parentheses string
+valid:  () [] {}
+invalid: (] , [}, [[
+'''
+
 class Solution:
     def isValid(self, s: str) -> bool:
 
-        p = {')': '(',
-             ']': '[',
-             '}': '{'
-             }
+        p = {')': '(', ']': '[', '}': '{'}
 
         stack = []
 
@@ -14,14 +17,10 @@ class Solution:
         for c in list(s):
             if c not in p.keys():
                 stack.append(c)
-                continue
-
             else:
-                if len(stack) > 0 and p[c] == stack[-1]:
+                if stack and p[c] == stack[-1]:
                     stack.pop()
-                    continue
                 else:
                     return False
 
-        if len(stack) == 0:
-            return True
+        return not stack
