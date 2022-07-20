@@ -1,0 +1,21 @@
+class Solution:
+    def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
+        
+        s, e = newInterval[0], newInterval[1]
+        
+        left, right = [], []
+        merge = []
+        
+        for i in intervals:
+            
+            if i[1] < s:
+                left.append(i)
+            elif e < i[0]:
+                right.append(i)
+            else:
+                s = min(s, i[0])
+                e = max(e, i[1])
+                
+        return left + [[s,e]] + right
+            
+                 
