@@ -1,13 +1,10 @@
 class Solution:
     def insert(self, intervals: List[List[int]], newInterval: List[int]) -> List[List[int]]:
         
-        s, e = newInterval[0], newInterval[1]
-        
+        s, e = newInterval[0], newInterval[1]        
         left, right = [], []
-        merge = []
         
-        for i in intervals:
-            
+        for i in intervals:          
             if i[1] < s:
                 left.append(i)
             elif e < i[0]:
