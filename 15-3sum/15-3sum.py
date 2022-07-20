@@ -1,27 +1,36 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         
-        res, triplet = [], []
-        lookup, uniq = {}, {}
-
-        for i, n in enumerate(nums):
-            lookup[n]=i
         
-        for i in range(len(nums)-1):
-            for j in range(i+1, len(nums)):
-                if -(nums[i]+nums[j]) in lookup:
-                    x = lookup[-(nums[i]+nums[j])]
-                    if x!=i and x!=j:
-                        triplet = [nums[i], nums[j], -(nums[i]+nums[j])] 
-                        triplet.sort()
-                        
-                        if str(triplet) not in uniq:
-                            uniq[str(triplet)]=1
-                            res.append(triplet)
-                            
+        nums.sort()
+        res = []
+        
+        for i in range(len(nums)-2):
+            
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
+                
+            l, r = i+1, len(nums)-1   
+            
+            while l<r:
+                s = nums[i]+nums[l]+nums[r]
 
-                         
+                if s<0:
+                    l+=1
+                elif s>0:
+                    r-=1
+                else:
+                    res.append([nums[i], nums[l], nums[r]])
+                    
+                    while(l<r and nums[l]==nums[l+1]):
+                        l+=1
+                    while(l<r and nums[r]==nums[r-1]):
+                        r-=1
+                    
+                    l+=1
+                    r-=1
+                    
+        
+        
         return res
-            
-            
-               
+                                  
