@@ -1,7 +1,10 @@
 '''
 Longest substring without repeating characters
 
-Difference b/w substring and subsequence
+Difference b/w substring and subsequence:
+A Substring takes out characters from a string placed between two specified indices in a continuous order.
+Subsequence can be derived from another sequence by deleting some or none of the elements in between but
+always maintaining the relative order of elements in the original sequence.
 '''
 
 
