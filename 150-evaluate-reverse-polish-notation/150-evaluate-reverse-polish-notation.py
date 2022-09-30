@@ -1,25 +1,24 @@
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         
+        ops = {'+': (lambda a,b: a+b), 
+               '-': (lambda a,b: a-b), 
+               '*': (lambda a,b: a*b), 
+               '/': (lambda a,b: a/b)
+              }
         
-        stack = []   
-        op = { 
-            "+" : (lambda x,y: x+y),
-            "-" : (lambda x,y: x-y),
-            "*" : (lambda x,y: x*y),
-            "/" : (lambda x,y: int(x/y))            
-        }
-        
+        stack = []
         
         for t in tokens:
-            if t not in op:
-                stack.append(t)
+            if t in ops:
+                o2, o1 = stack.pop(), stack.pop()
+                res = ops[t](o1,o2)
+                stack.append(int(res))
                 
             else:
-                b = stack.pop()
-                a = stack.pop()
-                res = op[t](int(a),int(b))
-                stack.append(res)
-                       
+                stack.append(int(t))
+                
+        
         return stack.pop()
-                   
+                
+                
