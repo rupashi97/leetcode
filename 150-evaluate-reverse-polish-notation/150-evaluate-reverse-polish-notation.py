@@ -13,12 +13,10 @@ class Solution:
             if t in ops:
                 o2, o1 = stack.pop(), stack.pop()
                 res = ops[t](o1,o2)
-                stack.append(int(res))
-                
+                stack.append(int(res))   
             else:
                 stack.append(int(t))
                 
         
         return stack.pop()
-                
-                
+                         
