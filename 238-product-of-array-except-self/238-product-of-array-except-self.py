@@ -13,6 +13,6 @@ class Solution:
         
         for i in range(len(nums)):
             ans.append(p[i]*s[i])
-        # print(p,s)
+            
         return ans
                           
