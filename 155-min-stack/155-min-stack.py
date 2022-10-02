@@ -1,16 +1,16 @@
+'''
+'''
+
 class MinStack:
 
     def __init__(self):
         self.s = []
         self.smin = []
-        # self.rej = []
-
+        
     def push(self, val: int) -> None:
         self.s.append(val)
-        if (self.smin and val <= self.smin[-1]) or not self.smin:
+        if not self.smin or val<= self.smin[-1]:
             self.smin.append(val)
-        # else:
-        #     self.rej.append(val)
 
     def pop(self) -> None:
         x = self.s.pop()
