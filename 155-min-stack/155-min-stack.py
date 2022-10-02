@@ -1,4 +1,5 @@
 '''
+An important invariant of a Stack is that when a new number, which we'll call x, is placed on a Stack, the numbers below it will not change for as long as number x remains on the Stack
 '''
 
 class MinStack:
