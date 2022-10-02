@@ -9,6 +9,6 @@ class Solution:
             
         for i in reversed(range(len(nums)-1)):
             ans[i] = ans[i] * nums[i+1] * s
-            s = nums[i+1] * s
+            s *= nums[i+1]
               
         return ans                   
