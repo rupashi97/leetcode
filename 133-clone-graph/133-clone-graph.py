@@ -10,8 +10,7 @@ class Solution:
     
     def __init__(self):
         self.visited = {}
-        
-        
+    
     def cloneGraph(self, node: 'Node') -> 'Node':
         
         if not node:
@@ -27,5 +26,4 @@ class Solution:
         if node.neighbors:
             clone_node.neighbors = [self.cloneGraph(n) for n in node.neighbors]
             
-        
         return clone_node 
