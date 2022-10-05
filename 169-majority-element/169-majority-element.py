@@ -7,7 +7,7 @@ class Solution:
         
         maj  = int(len(nums)/2)
         
-        for key,val in hashTable.items():
+        for key,val in hashTable.items(): # O(n)
             if val>maj:
                 maj=val
                 k = key
