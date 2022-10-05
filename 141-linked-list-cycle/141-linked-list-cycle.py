@@ -7,9 +7,6 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         
-        if not head:
-            return False
-        
         p = head
         hashs = set()
         
