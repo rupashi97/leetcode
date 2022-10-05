@@ -10,14 +10,15 @@ class Solution:
         if not head:
             return False
         
-        slow, fast = head, head
+        p = head
+        hashs = set()
         
-        while fast.next and fast.next.next:
-            slow = slow.next
-            fast = fast.next.next
-            
-            if slow==fast:
+        while p:
+            if p in hashs:
                 return True
             
-        
-        return False    
+            hashs.add(p)
+            p=p.next
+            
+        return False
+            
