@@ -5,13 +5,8 @@ class Solution:
         
         hashTable = Counter(nums)  # O(n)
         
-        maj  = int(len(nums)/2)
+        n = len(nums)
         
         for key,val in hashTable.items(): # O(n)
-            if val>maj:
-                maj=val
-                k = key
-                
-        
-        return k
-            
+            if val > n/2:
+                return key
