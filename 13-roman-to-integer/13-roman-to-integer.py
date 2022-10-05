@@ -1,7 +1,6 @@
 class Solution:
     def romanToInt(self, s: str) -> int:
-        
-        sub = {'V', 'X', 'L', 'C', 'D', 'M'}
+ 
         res = 0
         
         hash_table = {
@@ -21,14 +20,14 @@ class Solution:
             'M':1000 #
         }
 
-        i = len(s)-1 
-        while i >=0:
-            if s[i] in sub and (s[i-1]+s[i]) in hash_table and i>0:
-                    res +=hash_table[s[i-1]+s[i]]
-                    i -=2
+        i = 0
+        while i < len(s):
+            
+            if (i+1) < len(s) and s[i:i+2] in hash_table:
+                res += hash_table[s[i:i+2]]
+                i+=2
             else:
                 res += hash_table[s[i]]
-                i -=1
-            
-        return res
-            
+                i+=1
+                
+        return res   
