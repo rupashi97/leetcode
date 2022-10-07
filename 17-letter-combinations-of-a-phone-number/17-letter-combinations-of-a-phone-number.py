@@ -19,12 +19,9 @@ class Solution:
         if not digits:  # can combine
             return []
         
-        if len(digits)==1:
-            return mp[int(digits)]
-        
         for i in range(len(digits)):
             ip.append(mp[int(digits[i])])
             
-        op = itertools.product(*ip)
+        op = itertools.product(*ip) # unpacking list into arg
         op2 = ["".join(x) for x in op]
         return op2
