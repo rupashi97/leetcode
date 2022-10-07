@@ -3,7 +3,6 @@ class Solution:
         
         
         sub = set()
-        l = 0
         maxC = 0
         start = 0
         
