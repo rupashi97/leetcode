@@ -2,26 +2,33 @@ import itertools
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         
-        op = []
-        ip = []
+        if not digits:  return []
         
-        mp = {
-             2: ['a','b','c'],
-             3: ['d', 'e', 'f'],
-             4: ['g','h','i'],
-             5: ['j','k','l'],
-             6: ['m','n','o'],
-             7: ['p','q','r','s'],
-             8: ['t','u','v'],
-             9: ['w','x','y','z']
-             }
+        combos, letter_list = [], []
         
-        if not digits:  # can combine
-            return []
+        mp = { '2': 'abc',
+              '3':'def', 
+              '4': 'ghi',
+              '5':'jkl',
+              '6':'mno',
+              '7':'pqrs',
+              '8':'tuv',
+              '9':'wxyz'}
         
-        for i in range(len(digits)):
-            ip.append(mp[int(digits[i])])
+        if len(digits)==1: return list(mp[digits])
+        
+        for d in digits[::-1]: letter_list.append(mp[d])
             
-        op = itertools.product(*ip) # unpacking list into arg
-        op2 = ["".join(x) for x in op]
-        return op2
+            
+        while len(letter_list) > 1:
+            l1 = letter_list.pop()
+            l2 = letter_list.pop()
+            combos = []
+            for x in list(l1):
+                for y in list(l2):
+                    combos.append(x+y)
+                    
+            letter_list.append(combos)
+            
+        return letter_list[0]
+                    
