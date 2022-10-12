@@ -7,10 +7,10 @@ class Solution:
             
         occ = set()
         
-        for k in track:
-            if track[k] in occ:
+        for k,v in track.items():
+            if v in occ:
                 return False
-            occ.add(track[k])
+            occ.add(v)
             
         return True
                       
