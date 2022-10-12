@@ -7,7 +7,7 @@ class Solution:
         for s in strs:
             ans[tuple(sorted(s))].append(s)
 
-        return list(ans.values())
+        return ans.values()
             
     
     
