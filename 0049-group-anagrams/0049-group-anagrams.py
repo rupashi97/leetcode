@@ -5,8 +5,13 @@ class Solution:
         ans = collections.defaultdict(list)
 
         for s in strs:
-            ans[tuple(sorted(s))].append(s)
-
+            
+            key = [0]*26
+            for c in s:
+                key[ord(c) - ord('a')]+=1
+            
+            ans[tuple(key)].append(s)
+            
         return ans.values()
             
     
