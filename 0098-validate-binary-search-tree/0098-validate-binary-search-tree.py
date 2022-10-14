@@ -7,20 +7,29 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
         
-        def inorder(root):
-            if not root:
-                return True
-            
-            if not inorder(root.left):
-                return False
-            
-            if self.prev >= root.val:
-                return False
-            
-            self.prev = root.val
-            return inorder(root.right)
+        stack = []
+        prev = -math.inf
         
-        self.prev = -math.inf
-        return inorder(root)
+        while stack or root:
+            
+            while root:
+                stack.append(root)
+                root = root.left
+                
+            root = stack.pop()
+            
+            if prev >= root.val:
+                return False
+            
+            prev = root.val
+            root = root.right 
+            
+        return True
+            
+        
+                
+            
+            
+            
      
     
