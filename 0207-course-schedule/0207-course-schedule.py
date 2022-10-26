@@ -3,25 +3,23 @@ class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         
             
-        def isCyclic(graph, visited, src, localVisited):
+        def dfs(graph, visited, src, localVisited):
 
-            if src in visited: 
-                return False
+            if src in visited:    
+                return True      # already visited
             
-            if src in localVisited: return True
+            if src in localVisited: return False  # loop detected - course cannot be completed
             
             localVisited.add(src)
             
-            ret = False
             for neighbor in graph[src]:
-                ret = isCyclic(graph, visited, neighbor, localVisited)
-                if ret: break
-            
+                if not dfs(graph, visited, neighbor, localVisited):
+                    return False
+                
             localVisited.remove(src)
             visited.add(src)
             
-            return ret
-        
+            return True
         
         
         graph = collections.defaultdict(list)
@@ -31,7 +29,7 @@ class Solution:
         visited = set()
         localVisited = set()
         for i in range(numCourses):
-            if isCyclic(graph, visited, i, localVisited ):
+            if not dfs(graph, visited, i, localVisited ):
                 return False
         return True
         
