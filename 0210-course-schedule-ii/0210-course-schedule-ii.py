@@ -6,8 +6,11 @@ class Solution:
         for p in prerequisites:
             a, b = p[0], p[1]
             graph[a].append(b)
+            
+        stack = []
+        visited, path = set(), set()
         
-        def dfs(crs, stack, visited, path):
+        def dfs(crs):
             
             if crs in visited: return True # skip visited nodes
             
@@ -15,7 +18,7 @@ class Solution:
             path.add(crs)
             
             for neighbor in graph[crs]:
-                if not dfs(neighbor, stack, visited, path):
+                if not dfs(neighbor):
                     return False
                 
             stack.append(crs)
@@ -23,12 +26,9 @@ class Solution:
             
             return True
             
-            
-        stack = []
-        visited = set()
-        path = set()
+        
         for i in range(numCourses):
-            if not dfs(i, stack, visited, path):
+            if not dfs(i):
                 return []
             
         return stack    
