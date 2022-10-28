@@ -21,6 +21,7 @@ class Solution:
                 if not dfs(neighbor):
                     return False
                 
+            path.remove(crs)
             stack.append(crs)
             visited.add(crs)
             
