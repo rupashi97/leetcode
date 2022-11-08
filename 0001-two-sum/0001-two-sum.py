@@ -2,16 +2,12 @@ import collections
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         
-        
-        mp = collections.defaultdict(int)
+        track = collections.defaultdict(int)
         
         for i in range(len(nums)):
-            k = target - nums[i]
+            x = target - nums[i]
+            if x in track:
+                return [i, track[x]]
             
-            if k in mp:
-                return [i, mp[k]]
-            
-            mp[nums[i]]=i
-            
-            
-                
+            track[nums[i]]=i      
+                      
