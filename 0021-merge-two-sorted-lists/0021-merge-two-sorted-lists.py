@@ -19,9 +19,6 @@ class Solution:
         
         if list1 or list2:
             curr.next = list1 if list1 else list2
-            curr = list1 if list1 else list2
-            list1 = list1.next if list1 else None
-            list2 = list2.next if list2 else None
 
             
         return head.next     
