@@ -7,16 +7,16 @@ class Solution:
             ']':'['
         }
         
-        openBracs = {'(', '{', '['}
         stack = []
         
         for c in s:
-            if c in openBracs:
+            
+            if c in bracks:
+                topelement = stack.pop() if stack else '#'
+                if bracks[c] != topelement: return False
+            else:  
                 stack.append(c)
-                continue
             
-            if not stack: return False
-            openb = stack.pop()
-            if bracks[c] != openb: return False
+        
+        return not stack
             
-        return stack==[]    
