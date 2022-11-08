@@ -15,7 +15,6 @@ class Solution:
         maxProfit = 0
         for i in range(1, len(prices)):
             localMax = max(prices[i]-prices[i-1], localMax + prices[i]-prices[i-1])
-            maxProfit = max(maxProfit, localMax)
-            
+            maxProfit = max(maxProfit, localMax)  
             
         return maxProfit 
