@@ -3,7 +3,8 @@ class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         
         freqs = [0]*26
-        freqt = [0]*26
+        
+        if len(s)!=len(t): return False
         
         for c in s:
             i = ord(c) - ord('a')
@@ -11,7 +12,9 @@ class Solution:
             
         for c in t:
             i = ord(c) - ord('a')
-            freqt[i] += 1
+            freqs[i] -= 1
+            if freqs[i]<0: return False
         
-        return freqs == freqt
+        
+        return True
              
