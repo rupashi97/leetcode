@@ -5,11 +5,7 @@ class Solution:
     def firstBadVersion(self, n: int) -> int:
         
         b, l = 1, n
-        
         bad = -1
-        
-        # if n==1:
-        #     if isBadVersion(n): return n
         
         while b<=l:
             m = (b+l)//2
