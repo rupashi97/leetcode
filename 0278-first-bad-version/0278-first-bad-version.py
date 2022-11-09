@@ -1,0 +1,23 @@
+# The isBadVersion API is already defined for you.
+# def isBadVersion(version: int) -> bool:
+
+class Solution:
+    def firstBadVersion(self, n: int) -> int:
+        
+        b, l = 1, n
+        
+        bad = -1
+        
+        if n==1:
+            if isBadVersion(n): return n
+        
+        while b<=l:
+            # print('in here')
+            m = (b+l)//2
+            # print(m)
+            if isBadVersion(m):
+                l = m-1
+                bad = m 
+            else: b = m+1
+        
+        return bad
