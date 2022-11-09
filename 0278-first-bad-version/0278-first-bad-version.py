@@ -8,13 +8,11 @@ class Solution:
         
         bad = -1
         
-        if n==1:
-            if isBadVersion(n): return n
+        # if n==1:
+        #     if isBadVersion(n): return n
         
         while b<=l:
-            # print('in here')
             m = (b+l)//2
-            # print(m)
             if isBadVersion(m):
                 l = m-1
                 bad = m 
