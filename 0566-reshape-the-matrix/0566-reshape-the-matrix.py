@@ -4,13 +4,7 @@ class Solution:
         m, n = len(mat), len(mat[0])
         if (m*n) != (r*c): return mat
         
-        res, temp = [], []
+        queue = [ val for row in mat for val in row ]
         
-        for i in range(m):
-            for j in range(n):
-                temp.append(mat[i][j])
-                if (len(temp) != c): continue  
-                res.append(temp)
-                temp = []    
-        
+        res = [ queue[i:c+i] for i in range(0, r*c, c) ]
         return res
