@@ -2,9 +2,17 @@ class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         
         m, n = len(matrix), len(matrix[0])
-        for i in range(m):
-            if target>matrix[i][n-1]: continue
-            for j in range(n):
-                if target==matrix[i][j]: return True
+        arr = []
+        arr = [val for row in matrix for val in row]
+        print(arr)
+        
+        b, l = 0, m*n - 1
+        while b<=l:
+            mid = (b+l)//2
+            if target == arr[mid]: return True
+            if target>arr[mid]: 
+                b=mid+1
+            else: l=mid-1
+                
+        return False
             
-            return False
