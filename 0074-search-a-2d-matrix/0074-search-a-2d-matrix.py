@@ -4,7 +4,6 @@ class Solution:
 
         res = set([val for row in matrix for val in row])
         
-        if target in res: return True
-        return False
-        
+        return target in res
+       
         
