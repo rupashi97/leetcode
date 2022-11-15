@@ -9,8 +9,7 @@ class Solution:
         
         stack = []
         
-        for c in s:
-            
+        for c in s:  
             if c in bracks:
                 topelement = stack.pop() if stack else '#'
                 if bracks[c] != topelement: return False
