@@ -2,10 +2,7 @@ import collections
 class Solution:
     def firstUniqChar(self, s: str) -> int:
         
-        freq = defaultdict(int)
-        
-        for c in s:
-            freq[c] += 1
+        freq = collections.Counter(s)
             
         for i in range(len(s)):
             if freq[s[i]]==1:
