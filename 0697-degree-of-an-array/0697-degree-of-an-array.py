@@ -2,30 +2,21 @@ import collections
 class Solution:
     def findShortestSubArray(self, nums: List[int]) -> int:
         
-        mp1 = collections.Counter(nums)
-        maxfreq = max(mp1.values())
+        left, right = {},{}
+        count = collections.defaultdict(int)
         
-        minIdx = {}
-        maxIdx = {}
-        minLen = {}
-        n = len(nums)
-        minLen = {}
-        for i in range(n):
+        for i, x in enumerate(nums):
+            if x not in left: left[x]=i
+            right[x] = i
+            count[x] += 1
             
-            if mp1[nums[i]]!= maxfreq: continue
-              
-            minId, maxId = n, -1
-            if nums[i] in minIdx:
-                minId = minIdx[nums[i]]
-            
-            if nums[i] in maxIdx:
-                maxId = maxIdx[nums[i]]
-            
-            minIdx[nums[i]] = min(minId, i)
-            maxIdx[nums[i]] = max(maxId, i)
-
-            minLen[nums[i]] = maxIdx[nums[i]] - minIdx[nums[i]] + 1
-            
+        degree = max(count.values())
+        minlen = len(nums)
         
-        return min(minLen.values())
-         
+        for x in nums:
+            if count[x]==degree:
+                minlen = min(minlen, right[x] - left[x] + 1)
+                
+        return minlen
+                
+        
