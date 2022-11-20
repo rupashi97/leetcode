@@ -1,13 +1,16 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
         
-        res = []
+   
+        if x<0 or (x%10==0 and x!=0): return False
         
-        if x<0: return False
+        revertedNumber = 0
         
-        while x:
-            d = x%10
+        while x>revertedNumber:
+            revertedNumber = revertedNumber*10 + x%10
             x = x//10
-            res.append(d)
+            
+        return x == revertedNumber or x == revertedNumber//10
+            
         
-        return res == res[::-1]
+        
