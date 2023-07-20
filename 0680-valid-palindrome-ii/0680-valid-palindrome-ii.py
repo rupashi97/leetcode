@@ -1,11 +1,7 @@
 class Solution:
     def validPalindrome(self, s: str) -> bool:
-        
-        n = len(s)
-                
-        left, right = 0, n-1
-        switch = 0
-        
+
+        left, right, switch = 0, len(s)-1, 0        
         pal = True
         
         while left<=right:
